@@ -38,7 +38,7 @@ RUN git clone \
         --disable-nls \
         --disable-lto \
         && \
-    make STAGE1_CFLAGS='-O2' BOOT_CFLAGS='-O2' -j`nproc` && \
+    make STAGE1_CFLAGS='-O2' BOOT_CFLAGS='-O2' -j`nproc` > build_log.txt || (tail -500 build_log.txt; exit 1) && \
     make install && \
     cd .. && \
     rm -rf gcc-source gcc-build
